@@ -18,14 +18,14 @@ namespace TheWorld.Controllers
         {
             _signInManager = signInManager;
         }
-       /* public IActionResult Login()
+        public IActionResult Login()
         {
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Trips","App");
             }
             return View();
-        }*/
+        }
 
         [HttpPost]
         public async Task<ActionResult> Login (LoginViewModel vm, string returnUrl)
@@ -45,13 +45,22 @@ namespace TheWorld.Controllers
                     {
                         return Redirect(returnUrl);
                     }
-                    
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Username or password incorrect");
+                    ModelState.AddModelError("", "Username or password incorrect");                    
                 }
             }
+            return View();
+        }
+        
+        public async Task<ActionResult> Logout()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                await _signInManager.SignOutAsync();
+            }
+            return RedirectToAction("Index","App");
         }
     }
 }

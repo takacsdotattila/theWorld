@@ -8,7 +8,7 @@ using TheWorld.Models;
 namespace TheWorld.Migrations
 {
     [DbContext(typeof(WorldContext))]
-    [Migration("20160628211128_IdentityEntities")]
+    [Migration("20160629222718_IdentityEntities")]
     partial class IdentityEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
